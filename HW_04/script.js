@@ -30,7 +30,7 @@ function getThemes(pairs, themes) {
 
     }
     for (i in st_girls) {
-        pairsAndThemes.push([newPairs[i], " - " + themes[i]]);
+        pairsAndThemes.push([newPairs[i], themes[i]]);
     }
     return pairsAndThemes;
 }
