@@ -35,6 +35,8 @@ function getSubject(a) {
 }
 
 document.writeln(`<p>1. Список предметів: ${getSubject(0)}</p>`);
+
+
 ////#2
 function getAverageMark(a) {
     const arrMarks = Object.entries(students[a].subjects);
@@ -47,12 +49,17 @@ function getAverageMark(a) {
         return sum;
     }
     let summa = 0;
+    // for (let i = 0; i < arrMarks.length; i++) {
+    //     const arrSum = (getSum(arrMarks[i][1])) / arrMarks[i][1].length;
+    //     summa += arrSum;
+    // }
+    const arrMarksLength = arrMarks[0][1].length + arrMarks[1][1].length + arrMarks[2][1].length;
     for (let i = 0; i < arrMarks.length; i++) {
-        const arrSum = (getSum(arrMarks[i][1])) / arrMarks[i][1].length;
+        const arrSum = (getSum(arrMarks[i][1]));
         summa += arrSum;
 
     }
-    const result = summa / arrMarks.length;
+    const result = summa / arrMarksLength;
     return result.toFixed(2);
 }
 document.writeln(`<p>2. Середня оцінка: ${getAverageMark(0)}</p>`);
@@ -60,15 +67,14 @@ document.writeln(`<p>2. Середня оцінка: ${getAverageMark(0)}</p>`);
 ///#3
 
 function getStudentInfo(a) {
-    // let { name, course } = students[a];
     const studObj = {};
     studObj.name = students[a].name;
     studObj.course = students[a].course;
-    // studObj.avarage_mark = getAverageMark(a);
-    // return { name, course, avarage_mark: getAverageMark(students[a]) };
+    studObj.avarage_mark = getAverageMark(a);
     return studObj;
 }
-document.writeln(`<p>3. Інформація по студетну: ${getStudentInfo(0)}</p>`);
+console.log(getStudentInfo(0));
+document.writeln(`<p>3. Інформація по студетну: ${Object.entries(getStudentInfo(0))}</p>`);
 
 ////#4
 function getStudentsNames(students) {
@@ -82,7 +88,7 @@ function getStudentsNames(students) {
 document.writeln(`<p>4. Імена студентів у алфавітному порядку: ${getStudentsNames(students)}</p>`);
 
 
-////#5
+////#5 виводить найкращу середню оцінку, а не ім'я, потрібно допрацювати
 function getBestStudent(students) {
     let maxMark = 0;
     for (let i = 0; i < students.length; i++) {
@@ -94,6 +100,13 @@ document.writeln(`<p>5. Кращий студент зі списку по по�
 
 ////#6
 function calculateWordLetters(str) {
+    let str1 = str.split("");
+    const counts = {};
 
+    str1.forEach((el) => {
+        counts[el] = counts[el] ? (counts[el] + 1) : 1;
+    });
+    return counts;
 }
-document.writeln(`<p>6. Кращий студент зі списку по показнику середньої оцінки.: ${calculateWordLetters("test")}</p>`);
+console.log(calculateWordLetters("test"));
+document.writeln(`<p>6. Кількість букв в слові text: ${Object.entries(calculateWordLetters("test"))}</p>`);
