@@ -1,29 +1,17 @@
 //1-4
-const n = +(prompt("Please enter first number N:"));
-const m = Number(prompt("Please enter second number M:"));
-
-document.writeln(`<p>1. N = ${n}.</p>`)
-    // document.writeln(`<p>${}</p>`)
-
-if (Number.isInteger(n)) {
-    console.log(true);
-    document.writeln(`<p>2. N = ${n} - ціле число.</p>`);
-} else {
-    console.log(false);
-    document.writeln(`<p>2. N = ${n} -не є цілим числом.</p>`);
-
+let n = +(prompt("Please enter first number N:"));
+while (!Number.isInteger(n) || n <= 0) {
+    n = +(prompt("Please enter first number N again:"));
 }
+document.writeln(`<p>1-2. N = ${n} - ціле число.</p>`);
 
-document.writeln(`<p>3. M = ${m}.</p>`)
 
-if (Number.isInteger(m)) {
-    console.log(true);
-    document.writeln(`<p>4. M = ${m} - ціле число.</p>`);
-} else {
-    console.log(false);
-    document.writeln(`<p>4. M = ${m} -не є цілим числом.</p>`);
-
+let m = +(prompt("Please enter second number M:"));
+while (!Number.isInteger(m) || n > m) {
+    m = +(prompt("Please enter second number M again:"));
 }
+document.writeln(`<p>3-4. M = ${m} - ціле число.</p>`);
+
 
 //5
 const question = confirm("Чи потрібно пропускати парні числа?");
@@ -38,7 +26,6 @@ for (i = n; i <= m; i++) {
 document.writeln(`<p>6. Сума усіх чисел від ${n} до ${m}: ${sum}.</p>`);
 
 //7-8
-
 
 let sum2 = 0;
 for (i = n; i <= m; i++) {
