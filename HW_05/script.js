@@ -32,6 +32,13 @@ function getMedian(...numbers) {
     const intNumb = numbers.filter(function(number) {
         return Number.isInteger(number);
     });
+
+    function compareNumbers(a, b) {
+        return a - b;
+    }
+
+    console.log(intNumb.sort(compareNumbers));
+
     const min = intNumb[Math.floor((intNumb.length / 2) - 1)];
     const max = intNumb[Math.floor(intNumb.length / 2)];
     // console.log(numLength, min, max);
