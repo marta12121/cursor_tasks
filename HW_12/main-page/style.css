@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto;
+    color: white;
+}
+
+body {
+    background-image: url(../img/background.jpeg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.container {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.btn {
+    width: 100px;
+    height: 40px;
+    background: transparent;
+    border-radius: 35px;
+    border: 2px solid rgb(215, 215, 74);
+}
+
+.btn-r,
+.btn-g {
+    text-transform: uppercase;
+}
+
+.btn-n {
+    margin-top: 1em;
+    align-self: start;
+}
+
+.input {
+    border-radius: 5px;
+    margin-top: 2em;
+    text-align: center;
+}
+
+.user-card {
+    width: 250px;
+    height: 130px;
+    background: rgb(43, 41, 41);
+    border: 1px solid grey;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-card {
+    width: 50%;
+}
+
+.photo-card {
+    width: 80px;
+    height: 120px;
+    background-size: cover;
+}
+
+.gender,
+.birth {
+    font-size: x-small;
+}
