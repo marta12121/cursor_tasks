@@ -6,6 +6,7 @@
         "babel": "babel"
     },
     "dependencies": {
+        "balanced-match": "^2.0.0",
         "webpack-cli": "^5.0.1"
     },
     "devDependencies": {
