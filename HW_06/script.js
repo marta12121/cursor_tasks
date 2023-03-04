@@ -24,57 +24,53 @@ const students = [{
     }
 }];
 ////#1
-function getSubject(a) {
-    const subj = Object.keys(students[a].subjects);
-
-    for (let i = 0; i < subj.length; i++) {
-        subj[i] = subj[i].replace("_", " ");
-        subj[i] = subj[i][0].toUpperCase() + subj[i].substr(1);
-    }
-    return subj;
+function getSubject(student) {
+    const subj = Object.keys(students[student].subjects);
+    // for (let i = 0; i < subj.length; i++) {
+    //     subj[i] = subj[i].replace("_", " ");
+    //     subj[i] = subj[i][0].toUpperCase() + subj[i].substr(1);
+    // }
+    const newSubj = subj.map((el) => {
+        const newEl = el[0].toUpperCase() + el.slice(1);
+        if (newEl.includes("_")) {
+            return newEl.replace("_", " ");
+        }
+        return newEl;
+    });
+    return newSubj;
 }
-
 document.writeln(`<p>1. Список предметів: ${getSubject(0)}</p>`);
 
 
 ////#2
-function getAverageMark(a) {
-    const arrMarks = Object.entries(students[a].subjects);
+function getAverageMark(student) {
+    const arrMarks = Object.values(students[student].subjects);
+    let sum = 0;
+    let count = 0;
 
-    function getSum(arr) {
-        let sum = 0;
-        for (let i = 0; i < arr.length; i++) {
-            sum += arr[i];
-        }
-        return sum;
+    for (let marks of arrMarks) {
+        marks.map((val) => {
+            sum += val;
+            count++;
+        })
     }
-    let summa = 0;
-    // for (let i = 0; i < arrMarks.length; i++) {
-    //     const arrSum = (getSum(arrMarks[i][1])) / arrMarks[i][1].length;
-    //     summa += arrSum;
-    // }
-    const arrMarksLength = arrMarks[0][1].length + arrMarks[1][1].length + arrMarks[2][1].length;
-    for (let i = 0; i < arrMarks.length; i++) {
-        const arrSum = (getSum(arrMarks[i][1]));
-        summa += arrSum;
+    const averMark = (sum / count).toFixed(2);
+    return averMark;
 
-    }
-    const result = summa / arrMarksLength;
-    return result.toFixed(2);
 }
 document.writeln(`<p>2. Середня оцінка: ${getAverageMark(0)}</p>`);
 
 ///#3
 
-function getStudentInfo(a) {
+
+function getStudentInfo(student) {
     const studObj = {};
-    studObj.name = students[a].name;
-    studObj.course = students[a].course;
-    studObj.avarage_mark = getAverageMark(a);
+    studObj.name = students[student].name;
+    studObj.course = students[student].course;
+    studObj.average_mark = getAverageMark(student);
     return studObj;
 }
-console.log(getStudentInfo(0));
-document.writeln(`<p>3. Інформація по студетну: ${Object.entries(getStudentInfo(0))}</p>`);
+document.writeln(`<p>3. Інформація по студетну: ${Object.entries(getStudentInfo(2))}</p>`);
 
 ////#4
 function getStudentsNames(students) {
@@ -88,13 +84,19 @@ function getStudentsNames(students) {
 document.writeln(`<p>4. Імена студентів у алфавітному порядку: ${getStudentsNames(students)}</p>`);
 
 
-////#5 виводить найкращу середню оцінку, а не ім'я, потрібно допрацювати
+////#5 
 function getBestStudent(students) {
-    let maxMark = 0;
+    const studObj1 = {};
     for (let i = 0; i < students.length; i++) {
-        maxMark = Math.max(getAverageMark(i));
+        studObj1[students[i].name] = getAverageMark(i);
     }
-    return maxMark;
+    const arr = Object.values(studObj1);
+    const maxMark = Math.max(...arr);
+
+    const key = Object.keys(studObj1).find(key => studObj1[key] === `${maxMark}`);
+    return key;
+
+
 }
 document.writeln(`<p>5. Кращий студент зі списку по показнику середньої оцінки: ${getBestStudent(students)}</p>`);
 
