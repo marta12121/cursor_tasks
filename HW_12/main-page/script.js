@@ -1,4 +1,4 @@
-const MAIN_URL = "https://swapi.dev/api/";
+const MAIN_URL = "http://swapi.dev/api/";
 const container = document.querySelector(".container");
 const button_get = document.querySelector(".btn-g");
 const button_reload = document.querySelector(".btn-r");
